@@ -14,6 +14,15 @@ app.get("/products", (req, res) => {
   res.send(array);
 });
 
+app.get("/products/:id", (req, res) => {
+  array.forEach((item) => {
+    if (item.id === req.params.id) {
+      res.send(item)
+    }
+  });
+  res.send("Não encontrado");
+});
+
 app.post("/products/new", (req, res) => {
   array.push({
     id: req.body.id,
@@ -23,9 +32,9 @@ app.post("/products/new", (req, res) => {
   res.send("OK!");
 });
 
-app.put("/products/update", (req, res) => {
+app.put("/products/update/:id", (req, res) => {
   array.forEach((item) => {
-    if (item.id === req.body.id) {
+    if (item.id === req.params.id) {
       if (req.body.name) item.name = req.body.name;
       if (req.body.price) item.price = req.body.price;
     }
