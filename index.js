@@ -25,7 +25,7 @@ app.get("/products/:id", (req, res) => {
 
 app.post("/products/new", (req, res) => {
   array.push({
-    id: req.body.id,
+    id: array.length+1,
     name: req.body.name,
     price: req.body.price,
   });
