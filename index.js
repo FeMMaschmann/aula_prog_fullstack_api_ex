@@ -25,8 +25,12 @@ app.get("/products/:id", (req, res) => {
 
 app.post("/products/new", (req, res) => {
   let idProduct = 1
-  if (array.length > 0) idProduct = (array.slice(-1).id)+1
-  
+  if (array.length > 0) {
+    array.forEach((item) => {
+      idProduct = item.id+1
+    });
+  }
+
   array.push({
     id: idProduct,
     name: req.body.name,
